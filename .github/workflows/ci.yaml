@@ -6,8 +6,9 @@ permissions: read-all
 
 jobs:
   build:
-    matrix:
-      os: [ubuntu-latext, macos-latext, windows-latest]
+    strategy:
+      matrix:
+        os: [ubuntu-latext, macos-latext, windows-latest]
 
     runs-on: ${{ matrix.os }}
 
