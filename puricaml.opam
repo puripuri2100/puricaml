@@ -1,7 +1,7 @@
-opam-version: "2.1"
+opam-version: "2.0"
 name: "puricaml"
 version: "0.1.0"
-synposis: "A tiny OCaml compiler"
+synopsis: "A tiny OCaml compiler"
 description: """
 A tiny OCaml compiler.
 """
@@ -9,11 +9,13 @@ maintainer: ["puripuri2100"]
 authors: "puripuri2100"
 license: "MIT"
 homepage: "https://github.com/puripuri2100/puricaml"
+bug-reports: "https://github.com/puripuri2100/puricaml/issues"
+dev-repo: "https://github.com/puripuri2100/puricaml.git"
 depends: [
   "ocaml" {>= "4.14.2"}
   "menhir" {>= "20231231"}
   "menhirLib" {>= "20231231"}
 ]
 build: [
-  ["dune" "build"]
+  ["dune" "build" "-p" name "-j" jobs]
 ]
