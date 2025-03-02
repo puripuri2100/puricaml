@@ -1,6 +1,14 @@
 opam-version: "2.1"
+name: "puricaml"
+version: "0.1.0"
+synposis: "A tiny OCaml compiler"
+description: """
+A tiny OCaml compiler.
+"""
 maintainer: ["puripuri2100"]
+authors: "puripuri2100"
 license: "MIT"
+homepage: "https://github.com/puripuri2100/puricaml"
 depends: [
   "ocaml" {>= "4.14.2"}
   "menhir" {>= "20231231"}
