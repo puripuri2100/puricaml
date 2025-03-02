@@ -3,19 +3,18 @@ name: "puricaml"
 version: "0.1.0"
 synopsis: "A tiny OCaml compiler"
 description: """
-A tiny OCaml compiler.
+A tiny OCaml compiler
 """
-maintainer: ["puripuri2100"]
+maintainer: "puripuri2100"
 authors: "puripuri2100"
 license: "MIT"
 homepage: "https://github.com/puripuri2100/puricaml"
 bug-reports: "https://github.com/puripuri2100/puricaml/issues"
 dev-repo: "https://github.com/puripuri2100/puricaml.git"
 depends: [
+  "dune" {>= "3.15"}
   "ocaml" {>= "4.14.2"}
   "menhir" {>= "20231231"}
   "menhirLib" {>= "20231231"}
 ]
-build: [
-  ["dune" "build" "-p" name "-j" jobs]
-]
+build: ["dune" "build" "-p" name "-j" jobs]
