@@ -10,7 +10,7 @@ authors: "puripuri2100"
 license: "MIT"
 homepage: "https://github.com/puripuri2100/puricaml"
 bug-reports: "https://github.com/puripuri2100/puricaml/issues"
-dev-repo: "https://github.com/puripuri2100/puricaml.git"
+dev-repo: "git+https://github.com/puripuri2100/puricaml.git"
 depends: [
   "dune" {>= "3.15"}
   "ocaml" {>= "4.14.2"}
