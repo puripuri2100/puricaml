@@ -1,0 +1,1 @@
+Closure (Ldi 0;Access 0;Eq;Test (Access 0;, Ldi 1;Access 0;Minus;Access 1;Apply;Access 0;Add;);Return;); Let; Ldi 100; Access 0; Apply; Let; Access 0; EndLet; EndLet; 

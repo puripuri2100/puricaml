@@ -1,0 +1,73 @@
+let rec greater_lst n =
+  fun lst -> (
+    if List.length lst = 0 then
+      []
+    else
+      let x = List.hd lst in
+      let tail = List.tl lst in
+      if x > n then
+        x :: (greater_lst n tail)
+      else
+        greater_lst n tail
+  )
+
+in
+
+let rec less_lst n =
+  fun lst -> (
+    if List.length lst = 0 then
+      []
+    else
+      let x = List.hd lst in
+      let tail = List.tl lst in
+      if not (x > n) then
+        x :: (less_lst n tail)
+      else
+        less_lst n tail
+  )
+
+in
+
+let rec merge lst1 =
+  fun lst2 -> (
+    if List.length lst1 = 0 then
+      lst2
+    else
+      (
+        if List.length lst2 = 0 then
+          lst1
+        else
+          let head1 = List.hd lst1 in
+          let tail1 = List.tl lst1 in
+          let head2 = List.hd lst2 in
+          let tail2 = List.tl lst2 in
+          if head1 < head2 then
+            head1 :: (merge tail1 lst2)
+          else
+            head2 :: (merge lst1 tail2)
+      )
+  )
+
+in
+
+let rec quicksort lst =
+  if List.length lst = 0 then
+    []
+  else if List.length lst = 1 then
+    lst
+  else
+    let head = List.hd lst in
+    let tail = List.tl lst in
+
+    let less = less_lst head tail in
+    let sort1 = quicksort less in
+
+    let greater = greater_lst head tail in
+    let sort2 = quicksort greater in
+
+    merge (merge sort1 [head]) sort2
+
+in
+
+quicksort [139; 63; 177; 113; 3; 94; 179; 213; 183; 232; 69; 95; 125; 129; 109; 177; 91; 57; 68; 231; 136; 88; 206; 166; 174; 124; 112; 55; 31; 124; 90; 217; 66; 97; 177; 125; 50; 237; 122; 206; 146; 198; 26; 102; 118; 204; 176; 120; 166; 233; 86; 211; 246; 215; 62; 11; 3; 59; 95; 162; 132; 121; 144; 247; 179; 227; 55; 232; 19; 112; 128; 37; 27; 252; 192; 205; 52; 88; 166; 237; 208; 160; 190; 92; 42; 77; 255; 205; 122; 136; 44; 164; 37; 15; 187; 189; 17; 154; 178; 203; 225; 218; 203; 58; 178; 65; 91; 44; 137; 12; 212; 44; 68; 217; 129; 62; 59; 20; 158; 61; 207; 35; 205; 56; 227; 255; 63; 87; 11; 101; 241; 243; 17; 95; 238; 119; 145; 192; 52; 56; 0; 238; 89; 126; 190; 154; 156; 206; 228; 105; 117; 22; 72; 241; 47; 29; 165; 117; 116; 23; 134; 66; 111; 194; 24; 30; 236; 70; 129; 191; 17; 53; 67; 140; 59; 235; 162; 14; 250; 236; 172; 4; 157; 81; 10; 213; 251; 100; 54; 128; 74; 119; 235; 170; 140; 44; 154; 201; 116; 181;]
+

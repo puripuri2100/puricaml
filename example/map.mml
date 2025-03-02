@@ -1,0 +1,15 @@
+let rec map f =
+  fun lst -> (
+    if List.length lst = 0 then
+      []
+    else
+      let x = List.hd lst in
+      let tail = List.tl lst in
+      (f x) :: (map f tail)
+  )
+
+in
+
+let x = 123456 in
+
+map (fun i -> x / i) [10; 9; 8; 7; 6; 5; 4; 3; 2; 1; 0]

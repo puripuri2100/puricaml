@@ -1,0 +1,13 @@
+let rec append l1 =
+  (fun l2 -> 
+    if List.length l1 = 0 then
+      l2
+    else
+      let x = List.hd l1 in
+      let tail = List.tl l1 in
+      x :: (append tail l2)
+  )
+
+in
+
+append [1; 2; 3] [4; 5; 6]
