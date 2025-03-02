@@ -1,0 +1,40 @@
+name: CI
+
+on: [push, pull_request]
+
+permissions: read-all
+
+jobs:
+  build:
+    matrix:
+      os: [ubuntu-latext, macos-latext, windows-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v4
+
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 4.14
+
+      - run: opam exec -- dune build
+
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout tree
+        uses: actions/checkout@v4
+
+      - name: Set-up OCaml
+        uses: ocaml/setup-ocaml@v3
+        with:
+          ocaml-compiler: 4.14
+
+      - run: opam exec -- dune exec -- puricaml example/quicksort.mml
+      - run: opam exec -- dune exec -- puricaml example/quicksort.zam -r -z
+      - run: opam exec -- dune exec -- puricaml example/quicksort.cam -r -c
+
