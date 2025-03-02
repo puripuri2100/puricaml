@@ -1,0 +1,14 @@
+(executable
+  (name main)
+  (public_name puricaml)
+  (libraries
+    menhirLib
+  )
+)
+
+(ocamllex
+  (modules lexer machine_lexer))
+
+(menhir
+  (modules parser machine_parser)
+  (flags (--table --explain)))
